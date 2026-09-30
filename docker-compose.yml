@@ -48,7 +48,7 @@ services:
     container_name: osiris-intel
     environment:
       - OSIRIS_KEY=${SCANNER_KEY}
-    expose:
+    exposed:
       - "4000"
     restart: unless-stopped
     networks:
