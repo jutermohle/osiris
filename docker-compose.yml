@@ -21,6 +21,8 @@ services:
       - NODE_ENV=production
       - PORT=3000
       - HOSTNAME=0.0.0.0
+      - SCANNER_URL=http://osiris-intel:4000
+      - SCANNER_KEY=${SCANNER_KEY}
     extra_hosts:
       - "host.docker.internal:host-gateway"
     restart: unless-stopped
@@ -44,7 +46,9 @@ services:
       context: ./intel
       dockerfile: Dockerfile
     container_name: osiris-intel
-    ports:
+    environment:
+      - OSIRIS_KEY=${SCANNER_KEY}
+    expose:
       - "4000"
     restart: unless-stopped
     networks:
